@@ -1,5 +1,5 @@
 const fortunes = ['There is money in your future', 'Youre ability for accomplishment will follow with success', 'You will marry your lover', 'That bug bite from last week will bring super powers', 'Nothing can be seen about your future'];
-
+const ringsOfPower = ['Vilya', 'Nenya', 'Narya', 'The One Ring']
 
 module.exports = {
 
@@ -33,6 +33,20 @@ module.exports = {
 
         fortunes.splice(id, 1);
         res.status(200).send('fortune removed');
+    },
+
+    getRings: (req, res) => {
+        let randomIndex = Math.floor(Math.random() * ringsOfPower.length);
+        let randomRing = ringsOfPower[randomIndex];
+
+        res.status(200).send(randomRing);
+    },
+
+    addRing: (req, res) => {
+        const {newRing} = req.body;
+
+        ringsOfPower.push(newRing);
+        res.status(200).send('new ring added');
     }
 
     
