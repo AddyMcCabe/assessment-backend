@@ -38,12 +38,17 @@ const deleteFortune = () => {
         alert(res.data);
         deleteInput.value = ''
     })
+    .catch(err => {
+        alert('no fortune to delete')
+    })
 }
 
 const getRings = () => {
     axios.get('http://localhost:4000/api/rings/')
     .then(res => {
-        alert(res.data)
+    let display = document.createElement('h2')
+    display.textContent = res.data
+    document.getElementById('ring-display').appendChild(display)
     })
 }
 

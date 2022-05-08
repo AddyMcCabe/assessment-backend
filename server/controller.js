@@ -31,22 +31,28 @@ module.exports = {
     deleteFortune: (req, res) => {
         const {id} = req.params
 
-        fortunes.splice(id, 1);
-        res.status(200).send('fortune removed');
+        if(fortunes[+id]){
+            fortunes.splice(id, 1)
+            res.status(200).send('fortune deleted');
+        } else {
+            res.sendStatus(400)
+        }
+
+        
     },
 
     getRings: (req, res) => {
-        let randomIndex = Math.floor(Math.random() * ringsOfPower.length);
-        let randomRing = ringsOfPower[randomIndex];
+        // let randomIndex = Math.floor(Math.random() * ringsOfPower.length);
+        // let randomRing = ringsOfPower[randomIndex];
 
-        res.status(200).send(randomRing);
+        res.status(200).send(ringsOfPower);
     },
 
     addRing: (req, res) => {
         const {newRing} = req.body;
 
         ringsOfPower.push(newRing);
-        res.status(200).send('new ring added');
+        res.status(200).send('ring added');
     }
 
     
