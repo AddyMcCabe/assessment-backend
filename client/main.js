@@ -65,7 +65,7 @@ const addRing = () => {
 }
 
 const deleteRing = () => {
-    axios.delete(`http://localhost:4000/api/rings/0`)
+    axios.delete(`http://localhost:4000/api/rings/${deleteRingInput.value}`)
     .then(res => {
         alert(res.data);
         deleteInput.value = ''
