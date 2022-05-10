@@ -53,7 +53,19 @@ module.exports = {
 
         ringsOfPower.push(newRing);
         res.status(200).send('ring added');
-    }
+    },
+
+    deleteRing: (req, res) => {
+        const {id} = req.params
+            ringsOfPower.splice(id, 1)
+            res.status(200).send('ring deleted');
+              
+    },
+
+     
+
+
+
 
     
 
